@@ -12,28 +12,24 @@ axios.interceptors.request.use(
       },
     };
   },
-  (error) => {
-    Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
     const code = +error.response?.status;
-    if (code === 404) {
-      Promise.reject(error);
-      return;
-    }
-    if (400 < code < 500) {
-      Message.error("登录信息失效，请重新登录");
+    if (400 < code && code < 500) {
+      if (code !== 404) {
+        Message.error("登录信息失效，请重新登录");
+        return Promise.reject(new Error("获取信息失败"));
+      }
     }
     if (code >= 500) {
       Message.error("系统故障，管理员正在排查中");
+      return Promise.reject(new Error("系统故障，管理员正在排查中"));
     }
-    Promise.reject(error);
-
-    return;
+    return Promise.reject(error);
   }
 );
 

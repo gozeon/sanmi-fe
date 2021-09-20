@@ -26,6 +26,7 @@
             <i class="el-icon-s-home"></i>
             <span slot="title">控制台</span>
           </el-menu-item>
+
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-user-solid"></i>
@@ -36,6 +37,25 @@
             </el-menu-item>
             <el-menu-item index="Admin.User" :route="{ name: 'Admin.User' }">
               <span slot="title">用户</span>
+            </el-menu-item>
+          </el-submenu>
+
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-lollipop"></i>
+              <span>窗帘管理</span>
+            </template>
+            <el-menu-item
+              index="Admin.Curtain.New"
+              :route="{ name: 'Admin.Curtain.New' }"
+            >
+              <span slot="title">新建</span>
+            </el-menu-item>
+            <el-menu-item
+              index="Admin.Curtain"
+              :route="{ name: 'Admin.Curtain' }"
+            >
+              <span slot="title">列表页</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>

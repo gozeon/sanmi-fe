@@ -63,6 +63,10 @@ export default {
               ...this.form,
             })
             .then(({ data }) => {
+              console.log(
+                "🚀 ~ file: Login.vue ~ line 66 ~ .then ~ data",
+                data
+              );
               const { token, msg } = data;
               if (msg) {
                 this.$message.error(msg);
@@ -82,6 +86,11 @@ export default {
               }
             })
             .catch((e) => {
+              console.log(
+                "🚀 ~ file: Login.vue ~ line 89 ~ this.$refs.form.validate ~ e",
+                e
+              );
+
               this.$message.error(e.message);
             });
         }

@@ -18,6 +18,7 @@ const routes = [
   {
     path: "/admin",
     component: () => import("../views/Admin.vue"),
+    redirect: { name: "Admin" },
     children: [
       {
         path: "home",
@@ -42,6 +43,29 @@ const routes = [
         meta: {
           requiresAuth: true,
         },
+      },
+      {
+        path: "curtain",
+        redirect: { name: "Admin.Curtain" },
+        component: () => import("../views/curtain/Curtain.vue"),
+        children: [
+          {
+            path: "",
+            name: "Admin.Curtain",
+            component: () => import("../views/curtain/CurtainList.vue"),
+            meta: {
+              requiresAuth: true,
+            },
+          },
+          {
+            path: "new",
+            name: "Admin.Curtain.New",
+            component: () => import("../views/curtain/NewCurtain.vue"),
+            meta: {
+              requiresAuth: true,
+            },
+          },
+        ],
       },
     ],
   },

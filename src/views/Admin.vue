@@ -20,9 +20,27 @@
       </el-row>
     </el-header>
     <el-container>
-      <el-main>
-        <pre>{{ user }}</pre>
-      </el-main>
+      <el-aside width="200px">
+        <el-menu router :default-active="$route.name">
+          <el-menu-item index="Admin" :route="{ name: 'Admin' }">
+            <i class="el-icon-s-home"></i>
+            <span slot="title">控制台</span>
+          </el-menu-item>
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-user-solid"></i>
+              <span>账户管理</span>
+            </template>
+            <el-menu-item index="Admin.Role" :route="{ name: 'Admin.Role' }">
+              <span slot="title">角色</span>
+            </el-menu-item>
+            <el-menu-item index="Admin.User" :route="{ name: 'Admin.User' }">
+              <span slot="title">用户</span>
+            </el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <router-view />
     </el-container>
   </el-container>
 </template>
@@ -30,6 +48,9 @@
 <script>
 export default {
   name: "Home",
+  data: function () {
+    return {};
+  },
   computed: {
     user() {
       return this.$store.state.user;
@@ -55,6 +76,13 @@ export default {
     .el-dropdown {
       color: #fff;
     }
+  }
+}
+
+.el-aside {
+  height: calc(100vh - 60px);
+  .el-menu {
+    height: 100%;
   }
 }
 </style>

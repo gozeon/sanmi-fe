@@ -67,6 +67,29 @@ const routes = [
           },
         ],
       },
+      {
+        path: "house",
+        redirect: { name: "Admin.House" },
+        component: () => import("../views/house/House.vue"),
+        children: [
+          {
+            path: "",
+            name: "Admin.House",
+            component: () => import("../views/curtain/CurtainList.vue"),
+            meta: {
+              requiresAuth: true,
+            },
+          },
+          {
+            path: "new",
+            name: "Admin.House.New",
+            component: () => import("../views/house/NewHouse.vue"),
+            meta: {
+              requiresAuth: true,
+            },
+          },
+        ],
+      },
     ],
   },
   {

@@ -58,6 +58,19 @@
               <span slot="title">列表页</span>
             </el-menu-item>
           </el-submenu>
+
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-lollipop"></i>
+              <span>房屋管理</span>
+            </template>
+            <el-menu-item
+              index="Admin.House.New"
+              :route="{ name: 'Admin.House.New' }"
+            >
+              <span slot="title">新建</span>
+            </el-menu-item>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <router-view />

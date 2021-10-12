@@ -27,6 +27,22 @@
             <span slot="title">控制台</span>
           </el-menu-item>
 
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-lollipop"></i>
+              <span>合约管理</span>
+            </template>
+            <el-menu-item
+              index="Admin.House.New"
+              :route="{ name: 'Admin.House.New' }"
+            >
+              <span slot="title">新建合约</span>
+            </el-menu-item>
+            <el-menu-item index="Admin.House" :route="{ name: 'Admin.House' }">
+              <span slot="title">查询合约</span>
+            </el-menu-item>
+          </el-submenu>
+
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-user-solid"></i>
@@ -56,19 +72,6 @@
               :route="{ name: 'Admin.Curtain' }"
             >
               <span slot="title">列表页</span>
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-lollipop"></i>
-              <span>房屋管理</span>
-            </template>
-            <el-menu-item
-              index="Admin.House.New"
-              :route="{ name: 'Admin.House.New' }"
-            >
-              <span slot="title">新建</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -113,7 +116,7 @@ export default {
 }
 
 .el-aside {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 6);
   .el-menu {
     height: 100%;
   }

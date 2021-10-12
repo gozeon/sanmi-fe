@@ -1,128 +1,126 @@
 <template>
   <el-main>
-    <el-form ref="form" :model="form" label-width="120px" :rules="rules">
+    <el-form
+      ref="form"
+      :model="form"
+      label-width="120px"
+      :rules="rules"
+      size="small"
+    >
       <el-divider content-position="left">合约基础信息</el-divider>
-      <el-form-item label="合约编号">
-        <el-input v-model="form.a"></el-input>
+      <el-form-item label="合约编号" prop="number">
+        <el-input v-model="form.number"></el-input>
       </el-form-item>
 
-      <el-form-item label="客户姓名">
-        <el-input v-model="form.b"></el-input>
+      <el-form-item label="客户姓名" prop="client_name">
+        <el-input v-model="form.client_name"></el-input>
       </el-form-item>
 
-      <el-form-item label="客户电话">
-        <el-input-number v-model="form.c" :controls="false" />
+      <el-form-item label="客户电话" prop="client_phone_1">
+        <el-input v-model="form.client_phone_1" />
       </el-form-item>
 
-      <el-form-item label="客户备用电话">
-        <el-input-number v-model="form.d" :controls="false" />
+      <el-form-item label="客户备用电话" prop="client_phone_2">
+        <el-input v-model="form.client_phone_2" />
       </el-form-item>
 
-      <el-form-item label="客户微信号">
-        <el-input v-model="form.e" />
+      <el-form-item label="客户微信号" prop="client_wechat">
+        <el-input v-model="form.client_wechat" />
       </el-form-item>
 
-      <el-form-item label="客户地址">
-        <el-input type="textarea" v-model="form.f" :rows="2" />
+      <el-form-item label="客户地址" prop="client_address">
+        <el-input type="textarea" v-model="form.client_address" :rows="2" />
       </el-form-item>
 
-      <el-form-item label="客户地上楼层数">
-        <el-radio-group v-model="form.g">
-          <el-radio label="平层或错层"></el-radio>
-          <el-radio label="二层"></el-radio>
-          <el-radio label="三层"></el-radio>
-          <el-radio label="四层"></el-radio>
+      <el-form-item label="地上楼层数" prop="above_floor">
+        <el-radio-group v-model="form.above_floor">
+          <el-radio :label="1">平层或错层</el-radio>
+          <el-radio :label="2">二层</el-radio>
+          <el-radio :label="3">三层</el-radio>
+          <el-radio :label="4">四层</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="客户地下楼层数">
-        <el-radio-group v-model="form.h">
-          <el-radio label="无"></el-radio>
-          <el-radio label="负一层"></el-radio>
-          <el-radio label="负二层"></el-radio>
-          <el-radio label="负三层"></el-radio>
-          <el-radio label="负四层"></el-radio>
+      <el-form-item label="地下楼层数" prop="under_floor">
+        <el-radio-group v-model="form.under_floor">
+          <el-radio :label="0">无</el-radio>
+          <el-radio :label="1">负一层</el-radio>
+          <el-radio :label="2">负二层</el-radio>
+          <el-radio :label="3">负三层</el-radio>
+          <el-radio :label="4">负四层</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="居室数量">
-        <el-radio-group v-model="form.i">
-          <el-radio label="一室"></el-radio>
-          <el-radio label="二室"></el-radio>
-          <el-radio label="三室"></el-radio>
-          <el-radio label="四室"></el-radio>
-          <el-radio label="五室"></el-radio>
-          <el-radio label="六室"></el-radio>
-          <el-radio label="七室"></el-radio>
-          <el-radio label="八室"></el-radio>
-          <el-radio label="九室"></el-radio>
+      <el-form-item label="居室数量" prop="bedroom_num">
+        <el-radio-group v-model="form.bedroom_num">
+          <el-radio :label="1">一室</el-radio>
+          <el-radio :label="2">二室</el-radio>
+          <el-radio :label="3">三室</el-radio>
+          <el-radio :label="4">四室</el-radio>
+          <el-radio :label="5">五室</el-radio>
+          <el-radio :label="6">六室</el-radio>
+          <el-radio :label="7">七室</el-radio>
+          <el-radio :label="8">八室</el-radio>
+          <el-radio :label="9">九室</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="客厅数量">
-        <el-radio-group v-model="form.m">
-          <el-radio label="一厅"></el-radio>
-          <el-radio label="二厅"></el-radio>
-          <el-radio label="三厅"></el-radio>
-          <el-radio label="四厅"></el-radio>
+      <el-form-item label="客厅数量" prop="living_room_num">
+        <el-radio-group v-model="form.living_room_num">
+          <el-radio :label="1">一厅</el-radio>
+          <el-radio :label="2">二厅</el-radio>
+          <el-radio :label="3">三厅</el-radio>
+          <el-radio :label="4">四厅</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="卫生间数量">
-        <el-radio-group v-model="form.n">
-          <el-radio label="一卫"></el-radio>
-          <el-radio label="二卫"></el-radio>
-          <el-radio label="三卫"></el-radio>
-          <el-radio label="四卫"></el-radio>
-          <el-radio label="五卫"></el-radio>
-          <el-radio label="六卫"></el-radio>
+      <el-form-item label="卫生间数量" prop="rest_room_num">
+        <el-radio-group v-model="form.rest_room_num">
+          <el-radio :label="1">一卫</el-radio>
+          <el-radio :label="2">二卫</el-radio>
+          <el-radio :label="3">三卫</el-radio>
+          <el-radio :label="4">四卫</el-radio>
+          <el-radio :label="5">五卫</el-radio>
+          <el-radio :label="6">六卫</el-radio>
         </el-radio-group>
       </el-form-item>
 
-      <el-form-item label="客户来源">
-        <el-select v-model="form.p" placeholder="客户来源">
-          <el-option label="介绍人介绍" value="介绍人介绍"></el-option>
-          <el-option label="公司分配" value="公司分配"></el-option>
-          <el-option label="装饰公司介绍" value="装饰公司介绍"></el-option>
-          <el-option label="陌生拜访" value="陌生拜访"></el-option>
-          <el-option label="网路获客" value="网路获客"></el-option>
-          <el-option label="自然到访" value="自然到访"></el-option>
-          <el-option label="老客户介绍" value="老客户介绍"></el-option>
-          <el-option label="其他" value="其他"></el-option>
+      <el-form-item label="客户来源" prop="client_source">
+        <el-select v-model="form.client_source" placeholder="客户来源">
+          <el-option label="介绍人介绍" :value="1"></el-option>
+          <el-option label="公司分配" :value="2"></el-option>
+          <el-option label="装饰公司介绍" :value="3"></el-option>
+          <el-option label="陌生拜访" :value="4"></el-option>
+          <el-option label="网路获客" :value="5"></el-option>
+          <el-option label="自然到访" :value="6"></el-option>
+          <el-option label="老客户介绍" :value="7"></el-option>
+          <el-option label="其他" :value="0"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="成交总金额(元)">
-        <el-input-number v-model="form.pp" :controls="false" :precision="2" />
+      <el-form-item label="成交总金额(元)" prop="price">
+        <el-input-number
+          v-model="form.price"
+          :controls="false"
+          :precision="2"
+        />
       </el-form-item>
 
-      <el-form-item label="赠品">
-        <el-select v-model="form.q" placeholder="赠品">
-          <el-option label="无" value="其他"></el-option>
-          <el-option label="床品" value="床品"></el-option>
-          <el-option
-            label="电动窗帘电机一个"
-            value="电动窗帘电机一个"
-          ></el-option>
-          <el-option
-            label="换洗纱帘或窗帘一套"
-            value="换洗纱帘或窗帘一套"
-          ></el-option>
-          <el-option label="靠包" value="靠包"></el-option>
+      <el-form-item label="赠品" prop="gift">
+        <el-select v-model="form.gift" placeholder="赠品">
+          <el-option label="无" :value="0"></el-option>
+          <el-option label="床品" :value="1"></el-option>
+          <el-option label="电动窗帘电机一个" :value="2"></el-option>
+          <el-option label="换洗纱帘或窗帘一套" :value="3"></el-option>
+          <el-option label="靠包" :value="4"></el-option>
         </el-select>
       </el-form-item>
 
-      <el-form-item label="工期">
-        <el-select v-model="form.r" placeholder="工期">
-          <el-option label="20天，正常工期" value="20天，正常工期"></el-option>
-          <el-option
-            label="加急14天，需原价出售"
-            value="加急14天，需原价出售"
-          ></el-option>
-          <el-option
-            label="加急7天，需原价的1.5倍"
-            value="加急7天，需原价的1.5倍"
-          ></el-option>
+      <el-form-item label="工期" prop="work_time">
+        <el-select v-model="form.work_time" placeholder="工期">
+          <el-option label="20天，正常工期" :value="1"></el-option>
+          <el-option label="加急14天，需原价出售" :value="2"></el-option>
+          <el-option label="加急7天，需原价的1.5倍" :value="3"></el-option>
         </el-select>
       </el-form-item>
 
@@ -141,40 +139,43 @@ export default {
       form: {},
       roleList: [],
       rules: {
-        name: [
-          { required: true, message: "请输入名字", trigger: "blur" },
-          {
-            min: 2,
-            max: 50,
-            message: "长度在 2 到 50 个字符",
-            trigger: "blur",
-          },
-        ],
-        password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
-          {
-            min: 8,
-            max: 30,
-            message: "长度在 8 到 30 个字符",
-            trigger: "blur",
-          },
-        ],
+        number: [{ required: true, message: "必填项", trigger: "blur" }],
+        client_name: [{ required: true, message: "必填项", trigger: "blur" }],
 
-        email: [
+        client_phone_1: [
           {
             required: true,
-            message: "请输入邮箱",
-            trigger: "blur",
-          },
-          {
-            required: true,
-            pattern: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-            message: "请输入正确邮箱",
+            pattern: /0?(13|14|15|17|18|19)[0-9]{9}/,
+            message: "请输入正确手机号",
             trigger: "blur",
           },
         ],
+        client_phone_2: [
+          {
+            required: true,
+            pattern: /0?(13|14|15|17|18|19)[0-9]{9}/,
+            message: "请输入正确手机号",
+            trigger: "blur",
+          },
+        ],
+        client_wechat: [{ required: true, message: "必填项", trigger: "blur" }],
 
-        roleId: [{ required: true, message: "请设置角色", trigger: "blur" }],
+        client_address: [
+          { required: true, message: "必填项", trigger: "blur" },
+        ],
+        above_floor: [{ required: true, message: "必填项", trigger: "blur" }],
+        under_floor: [{ required: true, message: "必填项", trigger: "blur" }],
+
+        bedroom_num: [{ required: true, message: "必填项", trigger: "blur" }],
+        living_room_num: [
+          { required: true, message: "必填项", trigger: "blur" },
+        ],
+        rest_room_num: [{ required: true, message: "必填项", trigger: "blur" }],
+
+        client_source: [{ required: true, message: "必填项", trigger: "blur" }],
+        price: [{ required: true, message: "必填项", trigger: "blur" }],
+        gift: [{ required: true, message: "必填项", trigger: "blur" }],
+        work_time: [{ required: true, message: "必填项", trigger: "blur" }],
       },
     };
   },
@@ -201,7 +202,7 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.axios
-            .post("/user", {
+            .post("/contract", {
               ...this.form,
             })
             .then(({ data }) => {

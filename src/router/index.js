@@ -75,7 +75,7 @@ const routes = [
           {
             path: "",
             name: "Admin.House",
-            component: () => import("../views/curtain/CurtainList.vue"),
+            component: () => import("../views/house/HouseList.vue"),
             meta: {
               requiresAuth: true,
             },

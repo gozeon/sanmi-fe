@@ -3,7 +3,12 @@
     <div>
       <new-role @done="loadData"></new-role>
     </div>
-    <el-table :data="tableData" style="width: 100%">
+    <el-table
+      :data="tableData"
+      style="width: 100%"
+      border
+      :header-cell-style="{ background: '#f5f7fa' }"
+    >
       <el-table-column prop="id" label="ID"></el-table-column>
       <el-table-column prop="name" label="名字"></el-table-column>
       <el-table-column prop="display_name" label="显示名字"> </el-table-column>
@@ -29,8 +34,8 @@
   </el-main>
 </template>
 <script>
-import { format } from "date-fns";
-import NewRole from "./NewRole.vue";
+import { format } from 'date-fns'
+import NewRole from './NewRole.vue'
 export default {
   components: {
     NewRole,
@@ -38,33 +43,33 @@ export default {
   data() {
     return {
       tableData: [],
-    };
+    }
   },
   created() {
-    this.loadData();
+    this.loadData()
   },
   methods: {
     dateFormat(row, column, cellValue, index) {
       if (cellValue) {
-        return format(new Date(cellValue), "yyyy-MM-dd HH:mm:ss");
+        return format(new Date(cellValue), 'yyyy-MM-dd HH:mm:ss')
       }
-      return cellValue;
+      return cellValue
     },
     loadData() {
       this.axios
-        .get("/user/role")
+        .get('/user/role')
         .then(({ data }) => {
           if (data?.msg) {
-            this.$message.error(msg);
-            return;
+            this.$message.error(msg)
+            return
           }
 
-          this.tableData = data?.data;
+          this.tableData = data?.data
         })
         .catch((e) => {
-          this.$message.error(e.message);
-        });
+          this.$message.error(e.message)
+        })
     },
   },
-};
+}
 </script>

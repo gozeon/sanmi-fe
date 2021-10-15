@@ -125,8 +125,10 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">确定</el-button>
-        <el-button type="primary" @click="onSubmit">窗帘录入</el-button>
+        <el-button type="primary" @click="onSubmit">保存</el-button>
+        <el-button type="primary" @click="onSubmit('Admin.Curtain.New')"
+          >保存并录入窗帘</el-button
+        >
       </el-form-item>
     </el-form>
   </el-main>
@@ -139,89 +141,93 @@ export default {
       form: {},
       roleList: [],
       rules: {
-        number: [{ required: true, message: "必填项", trigger: "blur" }],
-        client_name: [{ required: true, message: "必填项", trigger: "blur" }],
+        number: [{ required: true, message: '必填项', trigger: 'blur' }],
+        client_name: [{ required: true, message: '必填项', trigger: 'blur' }],
 
         client_phone_1: [
           {
             required: true,
-            pattern: /0?(13|14|15|17|18|19)[0-9]{9}/,
-            message: "请输入正确手机号",
-            trigger: "blur",
+            pattern: /^(13|14|15|17|18|19)[0-9]{9}$/,
+            message: '请输入正确手机号',
+            trigger: 'blur',
           },
         ],
         client_phone_2: [
           {
             required: true,
-            pattern: /0?(13|14|15|17|18|19)[0-9]{9}/,
-            message: "请输入正确手机号",
-            trigger: "blur",
+            pattern: /^(13|14|15|17|18|19)[0-9]{9}$/,
+            message: '请输入正确手机号',
+            trigger: 'blur',
           },
         ],
-        client_wechat: [{ required: true, message: "必填项", trigger: "blur" }],
+        client_wechat: [{ required: true, message: '必填项', trigger: 'blur' }],
 
         client_address: [
-          { required: true, message: "必填项", trigger: "blur" },
+          { required: true, message: '必填项', trigger: 'blur' },
         ],
-        above_floor: [{ required: true, message: "必填项", trigger: "blur" }],
-        under_floor: [{ required: true, message: "必填项", trigger: "blur" }],
+        above_floor: [{ required: true, message: '必填项', trigger: 'blur' }],
+        under_floor: [{ required: true, message: '必填项', trigger: 'blur' }],
 
-        bedroom_num: [{ required: true, message: "必填项", trigger: "blur" }],
+        bedroom_num: [{ required: true, message: '必填项', trigger: 'blur' }],
         living_room_num: [
-          { required: true, message: "必填项", trigger: "blur" },
+          { required: true, message: '必填项', trigger: 'blur' },
         ],
-        rest_room_num: [{ required: true, message: "必填项", trigger: "blur" }],
+        rest_room_num: [{ required: true, message: '必填项', trigger: 'blur' }],
 
-        client_source: [{ required: true, message: "必填项", trigger: "blur" }],
-        price: [{ required: true, message: "必填项", trigger: "blur" }],
-        gift: [{ required: true, message: "必填项", trigger: "blur" }],
-        work_time: [{ required: true, message: "必填项", trigger: "blur" }],
+        client_source: [{ required: true, message: '必填项', trigger: 'blur' }],
+        price: [{ required: true, message: '必填项', trigger: 'blur' }],
+        gift: [{ required: true, message: '必填项', trigger: 'blur' }],
+        work_time: [{ required: true, message: '必填项', trigger: 'blur' }],
       },
-    };
+    }
   },
   created() {
-    this.loadOptions();
+    this.loadOptions()
   },
   methods: {
     loadOptions() {
       this.axios
-        .get("/user/role")
+        .get('/user/role')
         .then(({ data }) => {
           if (data?.msg) {
-            this.$message.error(msg);
-            return;
+            this.$message.error(msg)
+            return
           }
 
-          this.roleList = data?.data;
+          this.roleList = data?.data
         })
         .catch((e) => {
-          this.$message.error(e.message);
-        });
+          this.$message.error(e.message)
+        })
     },
-    onSubmit() {
+    onSubmit(next) {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.axios
-            .post("/contract", {
+            .post('/contract', {
               ...this.form,
             })
             .then(({ data }) => {
               if (data?.msg) {
-                this.$message.error(data.msg);
-                return;
+                this.$message.error(data.msg)
+                return
               }
 
-              this.$message.success("操作成功");
-              this.$emit("done", data);
-              this.visible = false;
-              this.form = {};
+              this.$message.success('操作成功')
+              this.$emit('done', data)
+              this.visible = false
+              this.form = {}
+
+              if (next) {
+                this.$router.push({ name: next, query: { id: data?.data } })
+              }
             })
             .catch((e) => {
-              this.$message.error(e.message);
-            });
+              this.$message.error(e.message)
+            })
         }
-      });
+      })
     },
   },
-};
+}
 </script>

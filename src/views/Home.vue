@@ -8,6 +8,11 @@
 
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
+              <router-link :to="{ name: 'Admin' }" tag="div" class="pointer"
+                >后台管理</router-link
+              >
+            </el-dropdown-item>
+            <el-dropdown-item>
               <router-link
                 :to="{ name: 'Logout', query: { nextUrl: $route.fullPath } }"
                 tag="div"
@@ -29,13 +34,13 @@
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   computed: {
     user() {
-      return this.$store.state.user;
+      return this.$store.state.user
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .el-header {

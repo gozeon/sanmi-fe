@@ -61,17 +61,17 @@
               <i class="el-icon-lollipop"></i>
               <span>窗帘管理</span>
             </template>
-            <el-menu-item
+            <!-- <el-menu-item
               index="Admin.Curtain.New"
               :route="{ name: 'Admin.Curtain.New' }"
             >
               <span slot="title">新建</span>
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item
               index="Admin.Curtain"
               :route="{ name: 'Admin.Curtain' }"
             >
-              <span slot="title">列表页</span>
+              <span slot="title">查询窗帘</span>
             </el-menu-item>
           </el-submenu>
         </el-menu>

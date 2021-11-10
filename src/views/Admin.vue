@@ -83,16 +83,16 @@
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   data: function () {
-    return {};
+    return {}
   },
   computed: {
     user() {
-      return this.$store.state.user;
+      return this.$store.state.user
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .el-header {
@@ -115,8 +115,12 @@ export default {
   }
 }
 
+.el-container {
+  height: 100vh;
+}
+
 .el-aside {
-  height: calc(100vh - 6);
+  background: red !important;
   .el-menu {
     height: 100%;
   }
